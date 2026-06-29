@@ -1,33 +1,3 @@
-## Propuesta de indicador
- indicador de negocio relevante
-
- para este modelo de datos propondria un indicador que aporte valor al seguimiento del programa educativo y aproveche tanto el estado actual como el historial
-
- por lo tanto se propone el indicador de tasa de permanencia de alumnos
-
- definicion
- mide el procentaje de alumnos que continuan activos respecto al total de alumnos inscritos
-
- formula:
- tasa de permanencia = alumnos activos / total de inscripciones * 100
-
- justificacion
- este indicador permite evaluar la efectividad del programa educativo para mantener a los alumnos inscritos ya que una disminucion en la tasa de permanencia puede indicar problemas como:
- alta rotacion de personal en las empresas
- decercion de los alumnos
- problemas con la oferta educativa
-
- tambien este KPI puede medirse por programa, empresa o periodo para identificar areas de mejora
-
- ## Stored procedure
- SP a implementar:  registrar un cambio de estatus
- # por que?
- - realiza una operacion de escritura
- - modificada dos tablas (`inscripciones` e `historial_status`)
- - valida que el alumno y la inscripcion exista
- - utiliza trasacciones para mantener la integridad de los datos
-
-
 # Prueba Técnica – Gestión de Alumnos
 
 ## Descripción
