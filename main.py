@@ -1,6 +1,5 @@
 import pandas as pd
 from database import get_engine
-from analysis import *
 import matplotlib.pyplot as plt
 from graphics import grafica_estatus_programa
 from graphics import grafica_altas_bajas
@@ -23,7 +22,8 @@ estatus_programa = pd.pivot_table(
     fill_value=0
 )
 
-#print(estatus_programa)
+print("Distribución de estatus actual por programa:")
+print(estatus_programa)
 
 # evalucion mensual de bajas vs activos
 df_historial["fecha_cambio"] = pd.to_datetime(df_historial["fecha_cambio"])
@@ -31,8 +31,8 @@ df_historial["fecha_cambio"] = pd.to_datetime(df_historial["fecha_cambio"])
 df_historial["mes"] = (df_historial["fecha_cambio"].dt.to_period("M").astype(str))
 
 evolucion = (df_historial.groupby(["mes", "estatus_nuevo"]).size().unstack(fill_value=0))
-
-# print(evolucion)
+print("Evolución mensual de bajas vs activos:")
+print(evolucion)
 
 # Tasa de activos por progrma
 resumen = (df
@@ -44,8 +44,8 @@ resumen = (df
 )
 
 resumen["tasa_activos"] = (resumen["activos"] / resumen["total"] * 100).round(2)
-
-#print(resumen)
+print("Tasa de activos por programa:")
+print(resumen)
 
 # motivo de baja mas frecuente
 
@@ -56,11 +56,11 @@ bajas = df_historial[
 ]
 
 motivos = bajas["motivo"].value_counts()
-#print(motivos)
+print(motivos)
 # print(motivos.idxmax())
 # print(motivos.max())
-
-# grafica_estatus_programa(df_inscripciones, df_programas)
+print("graficas generadas en la carpeta 'graficas'")
+grafica_estatus_programa(df_inscripciones, df_programas)
 grafica_altas_bajas(df_historial)
 
 
